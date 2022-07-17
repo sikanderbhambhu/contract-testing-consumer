@@ -1,0 +1,25 @@
+{
+  "name": "contract-testing-consumer-end",
+  "version": "1.0.0",
+  "description": "Contract Testing Using",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest Consumer/tests/ --runInBand",
+    "publish:results": "pact-broker publish './pactsFiles/PactFiles_GetProductApi/get-product-api-consumer-get-product-api-provider.json' --consumer-app-version=1.0.0 --broker-base-url=https://cropepam.pactflow.io --broker-token=z2KMfXMfDdVyU-NqWHndyw",
+
+    "can-i-deploy": "pact-broker can-i-deploy --pacticipant get-product-api-consumer --version=1.0 --to-environment SIT",
+    "deploy-consumer-part": "pact-broker record-deployment --pacticipant get-product-api-consumer --version 1.0 --environment SIT"
+  },
+  "license": "",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "absolute-version": "^1.0.0",
+    "axios": "^0.21.1",
+    "axios-debug-log": "^0.8.4",    
+    "jest": "^26.6.3",
+    "jest-pact": "^0.9.1",
+    "@pact-foundation/pact": "^9.17.2"
+  }
+}
